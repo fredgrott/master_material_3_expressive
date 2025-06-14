@@ -1,4 +1,4 @@
-![image header](./emdia/image-header.png)
+![image header](./media/image-header.png)
 
 # Master Material 3 Expressive
 
