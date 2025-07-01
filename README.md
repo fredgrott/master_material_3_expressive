@@ -23,9 +23,6 @@ Google uses the curve point technique used in Fonts to represent shapes that
 can easily animated to morph into another Material Shape.
 
 
-[![Material Shapes Demo](http://img.youtube.com/vi/DpJ8L25tB0s?si=Mabamb-ptZkq9yPX/0.jpg)](http://www.youtube.com/watch?v=DpJ8L25tB0s?si=Mabamb-ptZkq9yPX)
-
-
 
 
 ## Resources
