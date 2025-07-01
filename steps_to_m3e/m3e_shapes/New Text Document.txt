@@ -1,0 +1,13 @@
+
+
+RoundedPolygon
+
+composed of
+
+cubic
+features
+
+
+which basically means complex poly shapes 
+can be easily rep as drawing instructions and morphed during animation
+
