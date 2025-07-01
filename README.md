@@ -22,16 +22,9 @@ Material Shapes in Material 3 Expressive replaces animated icons in MD3. Basical
 Google uses the curve point technique used in Fonts to represent shapes that
 can easily animated to morph into another Material Shape.
 
+[![IMAGE ALT Material Shapes Demo](https://img.youtube.com/vi/DpJ8L25tB0s?si=Mabamb-ptZkq9yPX/0.jpg)](https://www.youtube.com/watch?v=DpJ8L25tB0s?si=Mabamb-ptZkq9yPX)
 
-<iframe
-	width="315"
-	height="560"
-	src="https://www.youtube.com/embed/DpJ8L25tB0s?si=Mabamb-ptZkq9yPX"
-	title="YouTube video player"
-	frameborder="0"
-	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-	allowfullscreen
-></iframe>
+
 
 ## Resources
 
