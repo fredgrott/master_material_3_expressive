@@ -1,0 +1,40 @@
+
+
+"editor.tokenColorCustomizations": { 
+    // see:
+      // https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide
+      "textMateRules": [
+        {
+         "scope": [
+           "comment.block",
+           "punctuation.definition.comment.end",
+           "punctuation.definition.comment.begin"
+         ],
+         "settings": {
+           "foreground": "#85b3f8",
+           "fontStyle": "bold"
+         }
+        },
+        {
+          "scope": [
+            "comment.block.documentation",
+            "comment.block.dartcode.dart",
+           "punctuation.definition.comment.begin.documentation",
+           "punctuation.definition.comment.end.documentation"
+          ],
+          "settings": {
+            "foreground": "#6bddb7",
+            "fontStyle": "bold"
+          }
+        },
+        {
+         "scope":["comment.line",
+           "punctuation.definition.comment"],
+           "settings": {
+             "foreground": "#00a2ff",
+             "fontStyle": "bold"
+            }
+       },
+      ],
+
+   },
