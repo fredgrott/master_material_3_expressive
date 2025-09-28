@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:motor_example/phase_animation/card_stack.dart';
-import 'package:motor_example/phase_animation/logo_animation.dart';
-import 'package:motor_example/phase_animation/loop_comparison.dart';
-import 'package:motor_example/phase_animation/manual_phase_control.dart';
+import 'package:motion_motor_demo/phase_animation/card_stack.dart';
+import 'package:motion_motor_demo/phase_animation/logo_animation.dart';
+import 'package:motion_motor_demo/phase_animation/loop_comparison.dart';
+import 'package:motion_motor_demo/phase_animation/manual_phase_control.dart';
 
 /// Comprehensive example demonstrating phase animations with Motor.
 ///
@@ -36,12 +36,12 @@ class SequenceAnimationExamples extends StatelessWidget {
                   context,
                   'Logo Animation',
                   'The simplest use case of sequence animations are animation timelines.',
-                  LogoAnimation(),
+                  const LogoAnimation(),
                 ),
                 _buildSection(
                   context,
                   'Manual Phase Control',
-                  'Phase Sequences don\'t always have to play automatically. '
+                  "Phase Sequences don't always have to play automatically. "
                       '\nYou can base the phase transitions on user input'
                       '\n\nTry spamming the button and see how the ball redirects smoothly',
                   const ManualPhaseControl(),
@@ -52,8 +52,8 @@ class SequenceAnimationExamples extends StatelessWidget {
                   'Drag a Card to move it to the back of the stack. '
                       'Watch how it always magically clears the stack before returning. '
                       '\n\nThis is an example of a fully physics-based sequence.',
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 64),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 64),
                     child: CardStack(),
                   ),
                 ),

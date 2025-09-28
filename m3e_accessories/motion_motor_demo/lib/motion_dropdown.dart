@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pull_down_button/pull_down_button.dart';
+
 import 'package:motor/motor.dart';
+import 'package:pull_down_button/pull_down_button.dart';
 
 final motionOptions = {
-  "Smooth Spring": CupertinoMotion.smooth(),
-  "Bouncy Spring": CupertinoMotion.bouncy(),
-  "Snappy Spring": CupertinoMotion.snappy(),
-  "Interactive Spring": CupertinoMotion.interactive(),
-  "Material 3 Ease": CurvedMotion(Durations.long2, Easing.standard),
+  "Smooth Spring": const CupertinoMotion.smooth(),
+  "Bouncy Spring": const CupertinoMotion.bouncy(),
+  "Snappy Spring": const CupertinoMotion.snappy(),
+  "Interactive Spring": const CupertinoMotion.interactive(),
+  "Material 3 Ease": const CurvedMotion(Durations.long2, Easing.standard),
   "Material 3 Expressive Spring":
-      MaterialSpringMotion.expressiveSpatialDefault(),
+      const MaterialSpringMotion.expressiveSpatialDefault(),
 };
 
 class MotionDropdown extends StatelessWidget {

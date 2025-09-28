@@ -1,9 +1,11 @@
+// ignore_for_file: unnecessary_async, unreachable_from_main
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:motor/motor.dart';
 
 void main() async {
-  runApp(CupertinoApp(
+  runApp(const CupertinoApp(
     home: PipExample(),
   ));
 }
@@ -24,8 +26,8 @@ class _PipExampleState extends State<PipExample> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Picture in Picture'),
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Picture in Picture'),
       ),
       child: SafeArea(
         child: Stack(
@@ -36,7 +38,7 @@ class _PipExampleState extends State<PipExample> {
                 alignment: alignment,
                 child: MotionDraggable<bool>(
                   data: true,
-                  motion: CupertinoMotion.bouncy(),
+                  motion: const CupertinoMotion.bouncy(),
                   child: Card(
                     color: Theme.of(context).colorScheme.primary,
                     child: SizedBox(
@@ -149,7 +151,7 @@ class _TargetState extends State<_Target> {
           child: AnimatedContainer(
             duration: Durations.short4,
             curve: Easing.standard,
-            margin: EdgeInsets.all(32),
+            margin: const EdgeInsets.all(32),
             width: 320,
             height: 180,
             decoration: ShapeDecoration(

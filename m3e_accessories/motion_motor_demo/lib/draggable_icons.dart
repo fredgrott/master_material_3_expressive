@@ -1,10 +1,13 @@
+// ignore_for_file: unnecessary_async, unreachable_from_main
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_motor_demo/motion_dropdown.dart';
 import 'package:motor/motor.dart';
-import 'package:motor_example/motion_dropdown.dart';
+
 
 void main() async {
-  runApp(CupertinoApp(
+  runApp(const CupertinoApp(
     home: DraggableIconsExample(),
   ));
 }
@@ -20,15 +23,15 @@ class DraggableIconsExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Draggable Icons'),
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Draggable Icons'),
       ),
       child: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MotionDropdown(motion: motion, label: const Text('Motion:')),
-            Expanded(child: DraggableIcons()),
+            const Expanded(child: DraggableIcons()),
             const Text('Drag the icons to the target'),
             const SizedBox(height: 16),
           ],
@@ -53,11 +56,11 @@ class _DraggableIconsState extends State<DraggableIcons> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         DraggableCard(icon: Icons.favorite),
-        const Target(),
+        Target(),
         DraggableCard(icon: Icons.cabin),
       ],
     );

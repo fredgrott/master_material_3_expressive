@@ -65,9 +65,9 @@ class _DragCardExample extends StatefulWidget {
 class _DragCardExampleState extends State<_DragCardExample>
     with SingleTickerProviderStateMixin {
   late final phaseController = SequenceMotionController<DragCardPhase, Offset>(
-    motion: Motion.bouncySpring(),
+    motion: const Motion.bouncySpring(),
     vsync: this,
-    converter: OffsetMotionConverter(),
+    converter: const OffsetMotionConverter(),
     initialValue: Offset.zero,
   );
 
@@ -75,7 +75,7 @@ class _DragCardExampleState extends State<_DragCardExample>
   static const dismissThreshold = 30.0;
 
   Offset? getClearanceOffset(Offset offset, Velocity velocity) {
-    final minDistance = cardSize * 1.5;
+    const minDistance = cardSize * 1.5;
     final vector = switch (velocity.pixelsPerSecond) {
       Offset.zero => offset.normalized,
       final v => v.normalized,
@@ -95,16 +95,16 @@ class _DragCardExampleState extends State<_DragCardExample>
     final clearance = getClearanceOffset(offset, velocity);
 
     return MotionSequence.statesWithMotions({
-      DragCardPhase.idle: (offset, Motion.none()),
+      DragCardPhase.idle: (offset, const Motion.none()),
       if (clearance != null)
         DragCardPhase.clearing: (
           clearance,
           // Only use the very beginning of the spring way before it settles
-          Motion.smoothSpring().subExtent(extent: .1),
+          const Motion.smoothSpring().subExtent(extent: .1),
         ),
       DragCardPhase.dismissing: (
         Offset.zero,
-        Motion.smoothSpring(),
+        const Motion.smoothSpring(),
       ),
     });
   }
@@ -183,7 +183,7 @@ class _DistanceBuilder extends StatelessWidget {
     final backgroundColor = CupertinoTheme.of(context).scaffoldBackgroundColor;
     return SingleMotionBuilder(
       value: index.toDouble(),
-      motion: Motion.cupertino(),
+      motion: const Motion.cupertino(),
       builder: (context, value, child) => Transform.translate(
         offset: Offset(0, value * -20),
         child: Transform.scale(

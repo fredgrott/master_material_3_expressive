@@ -1,9 +1,19 @@
+// Copyright 2025 Fredrick Allan Grott. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+//
+// Modified from old version of material_design
+// BSD Clause 3 License, Copyright 2025 by Kevin Yuji Kobori
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
-import 'package:material_shapes/material_shapes.dart';
+import 'package:material_shapes_demo/shapes/e_shapes.dart';
+import 'package:material_shapes_demo/shapes/morph.dart';
+import 'package:material_shapes_demo/shapes/rounded_polygon.dart';
+import 'package:material_shapes_demo/shapes/utils.dart';
 
 class ShapesPreview extends StatefulWidget {
   const ShapesPreview({super.key});
@@ -12,8 +22,7 @@ class ShapesPreview extends StatefulWidget {
   State<ShapesPreview> createState() => _ShapesPreviewState();
 }
 
-class _ShapesPreviewState extends State<ShapesPreview>
-    with SingleTickerProviderStateMixin {
+class _ShapesPreviewState extends State<ShapesPreview> with SingleTickerProviderStateMixin {
   static final List<({RoundedPolygon shape, String title})> _shapes = [
     (shape: MaterialShapes.circle, title: 'Circle'),
     (shape: MaterialShapes.square, title: 'Square'),
@@ -63,11 +72,7 @@ class _ShapesPreviewState extends State<ShapesPreview>
   Timer? _timer;
 
   final _bouncySimulation = SpringSimulation(
-    SpringDescription.withDampingRatio(
-      ratio: 0.5,
-      stiffness: 400,
-      mass: 1,
-    ),
+    SpringDescription.withDampingRatio(ratio: 0.5, stiffness: 400, mass: 1),
     0,
     1,
     5,
@@ -77,11 +82,7 @@ class _ShapesPreviewState extends State<ShapesPreview>
   // This simulation used for Heart shape morphing, as progress greater than 1
   // produces sharp weird shape.
   final _lessBouncySimulation = SpringSimulation(
-    SpringDescription.withDampingRatio(
-      ratio: 0.8,
-      stiffness: 300,
-      mass: 1,
-    ),
+    SpringDescription.withDampingRatio(ratio: 0.8, stiffness: 300, mass: 1),
     0,
     1,
     0,
@@ -97,12 +98,7 @@ class _ShapesPreviewState extends State<ShapesPreview>
 
     _morphs = <Morph>[];
     for (var i = 0; i < _shapes.length; i++) {
-      _morphs.add(
-        Morph(
-          _shapes[i].shape,
-          _shapes[(i + 1) % _shapes.length].shape,
-        ),
-      );
+      _morphs.add(Morph(_shapes[i].shape, _shapes[(i + 1) % _shapes.length].shape));
     }
 
     _controller = AnimationController.unbounded(vsync: this);
@@ -112,10 +108,7 @@ class _ShapesPreviewState extends State<ShapesPreview>
         return;
       }
 
-      _timer = Timer.periodic(
-        const Duration(seconds: 1),
-        (_) => _onAnimationDone(),
-      );
+      _timer = Timer.periodic(const Duration(seconds: 1), (_) => _onAnimationDone());
 
       _controller
         ..value = 0
@@ -145,9 +138,7 @@ class _ShapesPreviewState extends State<ShapesPreview>
     final isHeart = _shapeIndex.value == _shapes.length - 1;
     _controller
       ..value = 0
-      ..animateWith(
-        isHeart ? _lessBouncySimulation : _bouncySimulation,
-      );
+      ..animateWith(isHeart ? _lessBouncySimulation : _bouncySimulation);
   }
 
   @override
@@ -157,18 +148,11 @@ class _ShapesPreviewState extends State<ShapesPreview>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 300,
-              maxHeight: 300,
-            ),
+            constraints: const BoxConstraints(maxWidth: 300, maxHeight: 300),
             child: AspectRatio(
               aspectRatio: 1,
               child: CustomPaint(
-                painter: _MorphPainter(
-                  morphs: _morphs,
-                  morphIndex: _morphIndex,
-                  progress: _controller,
-                ),
+                painter: _MorphPainter(morphs: _morphs, morphIndex: _morphIndex, progress: _controller),
                 willChange: true,
                 child: const SizedBox.expand(),
               ),
@@ -188,13 +172,8 @@ class _ShapesPreviewState extends State<ShapesPreview>
 }
 
 class _MorphPainter extends CustomPainter {
-  _MorphPainter({
-    required this.morphs,
-    required this.morphIndex,
-    required this.progress,
-  }) : super(
-         repaint: Listenable.merge([morphIndex, progress]),
-       );
+  _MorphPainter({required this.morphs, required this.morphIndex, required this.progress})
+    : super(repaint: Listenable.merge([morphIndex, progress]));
 
   final List<Morph> morphs;
 
@@ -220,16 +199,12 @@ class _MorphPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_MorphPainter oldDelegate) {
-    return oldDelegate.morphs != morphs ||
-        oldDelegate.morphIndex != morphIndex ||
-        oldDelegate.progress != progress;
+    return oldDelegate.morphs != morphs || oldDelegate.morphIndex != morphIndex || oldDelegate.progress != progress;
   }
 }
 
 class _AnimatedTitle extends StatefulWidget {
-  const _AnimatedTitle({
-    required this.title,
-  });
+  const _AnimatedTitle({required this.title});
 
   final String title;
 
@@ -237,8 +212,7 @@ class _AnimatedTitle extends StatefulWidget {
   State<_AnimatedTitle> createState() => __AnimatedTitleState();
 }
 
-class __AnimatedTitleState extends State<_AnimatedTitle>
-    with SingleTickerProviderStateMixin {
+class __AnimatedTitleState extends State<_AnimatedTitle> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   late final Animation<double> _width;
@@ -246,15 +220,8 @@ class __AnimatedTitleState extends State<_AnimatedTitle>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      value: 1,
-      duration: const Duration(milliseconds: 200),
-    );
-    _width = Tween<double>(
-      begin: 600,
-      end: 400,
-    ).chain(CurveTween(curve: Curves.easeOut)).animate(_controller);
+    _controller = AnimationController(vsync: this, value: 1, duration: const Duration(milliseconds: 200));
+    _width = Tween<double>(begin: 600, end: 400).chain(CurveTween(curve: Curves.easeOut)).animate(_controller);
   }
 
   @override
@@ -279,13 +246,7 @@ class __AnimatedTitleState extends State<_AnimatedTitle>
         return Text(
           widget.title,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontFamily: 'DMSans',
-            fontSize: 40,
-            letterSpacing: -2,
-            fontVariations: [FontVariation.weight(_width.value)],
-            color: const Color(0xFF201D23),
-          ),
+          style: const TextStyle(fontSize: 40, letterSpacing: -2, color: Color(0xFF201D23)),
         );
       },
     );

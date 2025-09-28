@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_redundant_argument_values, unused_element_parameter
+
 import 'dart:async';
 import 'dart:math';
 
@@ -64,8 +66,8 @@ class _FlipCardExampleState extends State<FlipCardExample> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Flipper Sample'),
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Flipper Sample'),
       ),
       child: SafeArea(
         child: Column(
@@ -98,7 +100,7 @@ class _FlipCardExampleState extends State<FlipCardExample> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Spring - based'),
+                            const Text('Spring - based'),
                             const SizedBox(height: 16),
                             _FlipCardWithSpring(
                               isFlipped: isFlipped.value,
@@ -109,7 +111,7 @@ class _FlipCardExampleState extends State<FlipCardExample> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Curve - based'),
+                            const Text('Curve - based'),
                             const SizedBox(height: 16),
                             _FlipCardWithCurve(
                               isFlipped: isFlipped.value,
@@ -136,10 +138,10 @@ class _FlipCardExampleState extends State<FlipCardExample> {
 
 class _FlipCardWithSpring extends StatefulWidget {
   const _FlipCardWithSpring({
-    Key? key,
+    super.key,
     required this.isFlipped,
     required this.active,
-  }) : super(key: key);
+  });
 
   final bool isFlipped;
 
@@ -196,10 +198,10 @@ class _FlipCardWithSpringState extends State<_FlipCardWithSpring>
 
 class _FlipCardWithCurve extends StatefulWidget {
   const _FlipCardWithCurve({
-    Key? key,
+    super.key,
     required this.isFlipped,
     required this.active,
-  }) : super(key: key);
+  });
 
   final bool isFlipped;
 
@@ -261,7 +263,7 @@ class _FlipCardWithCurveState extends State<_FlipCardWithCurve>
 }
 
 class _FlipCard extends StatelessWidget {
-  const _FlipCard({Key? key, required this.animationValue}) : super(key: key);
+  const _FlipCard({super.key, required this.animationValue});
 
   final double animationValue;
 

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
@@ -27,7 +29,7 @@ class _LoopComparisonExampleState extends State<LoopComparisonExample> {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: CupertinoColors.label,
@@ -38,7 +40,7 @@ class _LoopComparisonExampleState extends State<LoopComparisonExample> {
           height: 60,
           child: SequenceMotionBuilder(
             restartTrigger: retrigger,
-            converter: SingleMotionConverter(),
+            converter: const SingleMotionConverter(),
             sequence: sequence,
             builder: (context, rotation, _, child) {
               return Center(
@@ -106,7 +108,7 @@ class _LoopComparisonExampleState extends State<LoopComparisonExample> {
                         3 * math.pi / 2,
                         2 * math.pi
                       ].toSteps(
-                        motion: Motion.cupertino(),
+                        motion: const Motion.cupertino(),
                         loopMode: LoopMode.none,
                       ),
                     ),
@@ -123,7 +125,7 @@ class _LoopComparisonExampleState extends State<LoopComparisonExample> {
                         3 * math.pi / 2,
                         2 * math.pi
                       ].toSteps(
-                        motion: Motion.cupertino(),
+                        motion: const Motion.cupertino(),
                         loopMode: LoopMode.loop,
                       ),
                     ),
@@ -140,7 +142,7 @@ class _LoopComparisonExampleState extends State<LoopComparisonExample> {
                         3 * math.pi / 2,
                         2 * math.pi
                       ].toSteps(
-                        motion: Motion.cupertino(),
+                        motion: const Motion.cupertino(),
                         loopMode: LoopMode.pingPong,
                       ),
                     ),
@@ -157,7 +159,7 @@ class _LoopComparisonExampleState extends State<LoopComparisonExample> {
                         3 * math.pi / 2,
                         2 * math.pi
                       ].toSteps(
-                        motion: Motion.cupertino(),
+                        motion: const Motion.cupertino(),
                         loopMode: LoopMode.seamless,
                       ),
                     ),
@@ -182,9 +184,9 @@ class _LoopComparisonExampleState extends State<LoopComparisonExample> {
                   ),
                 ),
                 CupertinoButton(
-                  minimumSize: Size.square(32),
+                  minimumSize: const Size.square(32),
                   padding: EdgeInsets.zero,
-                  child: Icon(CupertinoIcons.refresh),
+                  child: const Icon(CupertinoIcons.refresh),
                   onPressed: () {
                     setState(() {
                       retrigger++;

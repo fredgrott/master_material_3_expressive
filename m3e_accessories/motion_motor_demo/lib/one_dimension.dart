@@ -1,15 +1,17 @@
+// ignore_for_file: unreachable_from_main
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_motor_demo/motion_dropdown.dart';
 import 'package:motor/motor.dart';
-import 'package:motor_example/motion_dropdown.dart';
 
 void main() {
-  runApp(CupertinoApp(
+  runApp(const CupertinoApp(
     home: OneDimensionExample(),
   ));
 }
 
-final motion = ValueNotifier<Motion>(CupertinoMotion.bouncy());
+final motion = ValueNotifier<Motion>(const CupertinoMotion.bouncy());
 
 class OneDimensionExample extends StatefulWidget {
   const OneDimensionExample({super.key});
@@ -27,12 +29,12 @@ class _OneDimensionExampleState extends State<OneDimensionExample> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(),
+      navigationBar: const CupertinoNavigationBar(),
       child: SafeArea(
         child: Column(
           children: [
             MotionDropdown(
-              label: Text('Motion:'),
+              label: const Text('Motion:'),
               motion: motion,
             ),
             Expanded(
@@ -66,7 +68,7 @@ class _OneDimensionExampleState extends State<OneDimensionExample> {
                           },
                           child: Material(
                             color: Theme.of(context).colorScheme.primary,
-                            shape: StadiumBorder(),
+                            shape: const StadiumBorder(),
                             child: SizedBox.square(
                               dimension: 200,
                               child: Center(

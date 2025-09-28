@@ -1,12 +1,15 @@
+// ignore_for_file: unnecessary_async
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:motor_example/2d_redirection.dart';
-import 'package:motor_example/draggable_icons.dart';
-import 'package:motor_example/flip_card.dart';
-import 'package:motor_example/one_dimension.dart';
-import 'package:motor_example/phase_animation/phase_animation.dart';
-import 'package:motor_example/pip.dart';
-import 'package:motor_example/title_slide.dart';
+import 'package:motion_motor_demo/2d_redirection.dart';
+import 'package:motion_motor_demo/draggable_icons.dart';
+import 'package:motion_motor_demo/flip_card.dart';
+import 'package:motion_motor_demo/one_dimension.dart';
+import 'package:motion_motor_demo/phase_animation/phase_animation.dart';
+import 'package:motion_motor_demo/pip.dart';
+import 'package:motion_motor_demo/title_slide.dart';
+
 
 void main() async {
   runApp(
@@ -20,49 +23,49 @@ final motorRoutes = [
   NamedRouteDef(
     name: 'Motor Examples',
     path: '',
-    type: RouteType.cupertino(),
+    type: const RouteType.cupertino(),
     builder: (context, state) => const MotorExample(),
   ),
   NamedRouteDef(
     name: OneDimensionExample.name,
     path: OneDimensionExample.path,
-    type: RouteType.cupertino(),
-    builder: (context, state) => OneDimensionExample(),
+    type: const RouteType.cupertino(),
+    builder: (context, state) => const OneDimensionExample(),
   ),
   NamedRouteDef(
     name: TwoDimensionRedirectionExample.name,
     path: TwoDimensionRedirectionExample.path,
-    type: RouteType.cupertino(),
-    builder: (context, state) => TwoDimensionRedirectionExample(),
+    type: const RouteType.cupertino(),
+    builder: (context, state) => const TwoDimensionRedirectionExample(),
   ),
   NamedRouteDef(
     name: DraggableIconsExample.name,
     path: DraggableIconsExample.path,
-    type: RouteType.cupertino(),
-    builder: (context, state) => DraggableIconsExample(),
+    type: const RouteType.cupertino(),
+    builder: (context, state) => const DraggableIconsExample(),
   ),
   NamedRouteDef(
     name: PipExample.name,
     path: PipExample.path,
-    type: RouteType.cupertino(),
-    builder: (context, state) => PipExample(),
+    type: const RouteType.cupertino(),
+    builder: (context, state) => const PipExample(),
   ),
   NamedRouteDef(
     name: FlipCardExample.name,
     path: FlipCardExample.path,
-    type: RouteType.cupertino(),
-    builder: (context, state) => FlipCardExample(),
+    type: const RouteType.cupertino(),
+    builder: (context, state) => const FlipCardExample(),
   ),
   NamedRouteDef(
     name: TitleSlideExample.name,
     path: TitleSlideExample.path,
-    type: RouteType.cupertino(),
-    builder: (context, state) => TitleSlideExample(),
+    type: const RouteType.cupertino(),
+    builder: (context, state) => const TitleSlideExample(),
   ),
   NamedRouteDef(
     name: SequenceAnimationExamples.name,
     path: SequenceAnimationExamples.path,
-    type: RouteType.cupertino(),
+    type: const RouteType.cupertino(),
     builder: (context, state) => const SequenceAnimationExamples(),
   ),
 ];
@@ -72,7 +75,7 @@ final router = RootStackRouter.build(
     NamedRouteDef.shell(
       name: 'Home',
       path: '/',
-      type: RouteType.cupertino(),
+      type: const RouteType.cupertino(),
       children: motorRoutes,
     ),
   ],
@@ -86,7 +89,7 @@ class MotorExample extends StatelessWidget {
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
-          CupertinoSliverNavigationBar(),
+          const CupertinoSliverNavigationBar(),
           SliverPadding(
             padding: const EdgeInsets.all(16),
             sliver: SliverToBoxAdapter(

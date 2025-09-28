@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_async
+
 import 'package:flutter/material.dart';
 import 'package:motor/motor.dart';
 
@@ -7,7 +9,7 @@ void main() async {
     theme: ThemeData.from(
       colorScheme: colorScheme,
     ),
-    home: ListExample(),
+    home: const ListExample(),
   ));
 }
 
@@ -69,7 +71,20 @@ class _ListItemState extends State<ListItem> {
     return MotionDraggable(
       axis: Axis.vertical,
       data: widget.data,
-      childWhenDragging: SizedBox.shrink(),
+      childWhenDragging: const SizedBox.shrink(),
+      feedbackMatchesConstraints: true,
+      feedback: TweenAnimationBuilder<double>(
+        tween: Tween(begin: 0.0, end: 1),
+        duration: Durations.short4,
+        curve: Easing.standard,
+        builder: (context, value, child) => Transform.translate(
+          offset: Offset(value * 16, -value * 16),
+          child: Card(
+            elevation: (value + .2) * 8,
+            child: tile,
+          ),
+        ),
+      ),
       child: DragTarget<int>(
         onAcceptWithDetails: (details) {
           widget.onInsert(details.data);
@@ -84,26 +99,13 @@ class _ListItemState extends State<ListItem> {
                 child: child,
               ),
               child: Card(
-                margin: EdgeInsets.all(8),
+                margin: const EdgeInsets.all(8),
                 elevation: 0,
                 color: Theme.of(context).colorScheme.surfaceContainerHighest,
               ),
             ),
             tile,
           ],
-        ),
-      ),
-      feedbackMatchesConstraints: true,
-      feedback: TweenAnimationBuilder<double>(
-        tween: Tween(begin: 0.0, end: 1),
-        duration: Durations.short4,
-        curve: Easing.standard,
-        builder: (context, value, child) => Transform.translate(
-          offset: Offset(value * 16, -value * 16),
-          child: Card(
-            elevation: (value + .2) * 8,
-            child: tile,
-          ),
         ),
       ),
     );

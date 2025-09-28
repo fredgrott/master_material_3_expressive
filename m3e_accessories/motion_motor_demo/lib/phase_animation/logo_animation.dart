@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'package:flutter/widgets.dart';
 import 'package:motor/motor.dart';
 
@@ -14,23 +16,23 @@ class LogoAnimation extends StatelessWidget {
             [
               (
                 const LogoState(),
-                NoMotion(Duration(seconds: 1)),
+                const NoMotion(Duration(seconds: 1)),
               ),
               (
                 const LogoState(logoOpacity: 1),
-                CurvedMotion(Duration(seconds: 1), Curves.ease),
+                const CurvedMotion(Duration(seconds: 1), Curves.ease),
               ),
               (
                 const LogoState(logoOpacity: 1, textOpacity: 1, textWidth: 1),
-                Motion.smoothSpring(duration: const Duration(seconds: 1)),
+                const Motion.smoothSpring(duration: Duration(seconds: 1)),
               ),
               (
                 const LogoState(logoOpacity: 1, textOpacity: 1, textWidth: 1),
-                NoMotion(Duration(seconds: 3)),
+                const NoMotion(Duration(seconds: 3)),
               ),
               (
                 const LogoState(logoOpacity: 0, textOpacity: 0, textWidth: 1),
-                CurvedMotion(Duration(seconds: 1), Curves.ease),
+                const CurvedMotion(Duration(seconds: 1), Curves.ease),
               ),
             ],
             loop: LoopMode.seamless,

@@ -1,10 +1,13 @@
+// ignore_for_file: avoid_redundant_argument_values, unreachable_from_main, file_names
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_motor_demo/motion_dropdown.dart';
 import 'package:motor/motor.dart';
-import 'package:motor_example/motion_dropdown.dart';
+
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: TwoDimensionRedirectionExample(),
   ));
 }
@@ -14,8 +17,8 @@ final motion = ValueNotifier<Motion>(const CupertinoMotion.smooth());
 class TwoDimensionRedirectionExample extends StatefulWidget {
   const TwoDimensionRedirectionExample({super.key});
 
-  static const name = 'Two Dimension Redirection';
-  static const path = 'two-dimension-redirection';
+  static const String name = 'Two Dimension Redirection';
+  static const String path = 'two-dimension-redirection';
 
   @override
   State<TwoDimensionRedirectionExample> createState() =>
@@ -29,7 +32,7 @@ class _TwoDimensionRedirectionExampleState
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(),
+      navigationBar: const CupertinoNavigationBar(),
       child: SafeArea(
         child: Column(
           children: [
@@ -56,7 +59,7 @@ class _TwoDimensionRedirectionExampleState
                         motion: motion.value,
                         converter: const OffsetMotionConverter(),
                         value: offset,
-                        from: Offset(0, 200),
+                        from: const Offset(0, 200),
                         builder: (context, value, velocity, child) {
                           return Transform.translate(
                             offset: value,
@@ -87,7 +90,7 @@ class _TwoDimensionRedirectionExampleState
                               width: 4,
                             ),
                           ),
-                          child: SizedBox.square(
+                          child: const SizedBox.square(
                             dimension: 100,
                           ),
                         ),

@@ -1,9 +1,11 @@
+// ignore_for_file: unnecessary_async, unreachable_from_main
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:motor/motor.dart';
 
 void main() async {
-  runApp(CupertinoApp(
+  runApp(const CupertinoApp(
     home: TitleSlideExample(),
   ));
 }
@@ -13,8 +15,8 @@ final motion = ValueNotifier<Motion>(const CupertinoMotion.bouncy());
 class TitleSlideExample extends StatefulWidget {
   const TitleSlideExample({super.key});
 
-  static const name = 'Title Slide';
-  static const path = 'title-slide';
+  static const String name = 'Title Slide';
+  static const String path = 'title-slide';
 
   @override
   State<TitleSlideExample> createState() => _TitleSlideExampleState();
@@ -27,9 +29,9 @@ class _TitleSlideExampleState extends State<TitleSlideExample> {
   Widget build(BuildContext context) {
     return CupertinoTheme(
       data: CupertinoTheme.of(context).copyWith(
-        scaffoldBackgroundColor: Color(0xffDAD5D1),
+        scaffoldBackgroundColor: const Color(0xffDAD5D1),
         textTheme: CupertinoTheme.of(context).textTheme.copyWith(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 fontFamily: 'Archivo',
                 color: Color(0xff2F2E2D),
                 fontSize: 64,
@@ -68,14 +70,14 @@ class MotorLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleMotionBuilder(
-      motion: CupertinoMotion.smooth(),
+      motion: const CupertinoMotion.smooth(),
       value: visible ? 1 : 0,
       builder: (context, opacity, _) => Visibility(
         visible: opacity >= 0.01,
         child: Opacity(
           opacity: opacity.clamp(0, 1),
           child: RichText(
-            key: ValueKey(true),
+            key: const ValueKey(true),
             text: TextSpan(children: [
               for (final (index, char) in value.runes.indexed)
                 WidgetSpan(
@@ -116,7 +118,7 @@ class _LetterState extends State<_Letter> {
   @override
   Widget build(BuildContext context) {
     final additionalDuration = Duration(milliseconds: widget.index * 200);
-    final motion = CupertinoMotion.bouncy(
+    const motion = CupertinoMotion.bouncy(
       extraBounce: .3,
       duration: Durations.extralong4,
     );
@@ -124,7 +126,7 @@ class _LetterState extends State<_Letter> {
     final initialStyle =
         CupertinoTheme.of(context).textTheme.textStyle.copyWith(
       fontSize: 64,
-      fontVariations: [FontVariation.weight(100), FontVariation.width(50)],
+      fontVariations: [const FontVariation.weight(100), const FontVariation.width(50)],
     );
     return MouseRegion(
       onEnter: (event) => setState(() => _hovered = true),
@@ -137,7 +139,7 @@ class _LetterState extends State<_Letter> {
                 fontSize: widget.visible ? 64 : 0,
                 fontVariations: [
                   FontVariation.weight(_hovered ? 900 : 700),
-                  FontVariation.width(110)
+                  const FontVariation.width(110)
                 ],
               )
             : initialStyle,
@@ -152,7 +154,7 @@ class _LetterState extends State<_Letter> {
               child: child,
             ),
             child: Text(
-              textHeightBehavior: TextHeightBehavior(),
+              textHeightBehavior: const TextHeightBehavior(),
               widget.letter,
               style: value,
             ),

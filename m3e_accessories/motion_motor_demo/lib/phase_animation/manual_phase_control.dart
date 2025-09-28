@@ -9,22 +9,22 @@ class ManualPhaseControl extends StatefulWidget {
 }
 
 class _ManualPhaseControlState extends State<ManualPhaseControl> {
-  var phase = 0;
+  int phase = 0;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: 300),
+        constraints: const BoxConstraints(maxHeight: 300),
         child: AspectRatio(
           aspectRatio: 1,
           child: SequenceMotionBuilder(
               sequence: [
-                Alignment(-1, -1),
-                Alignment(1, -1),
-                Alignment(1, 1),
-                Alignment(-1, 1),
-              ].toSteps(motion: Motion.smoothSpring()),
-              converter: AlignmentMotionConverter(),
+                Alignment.topLeft,
+                Alignment.topRight,
+                Alignment.bottomRight,
+                Alignment.bottomLeft,
+              ].toSteps(motion: const Motion.smoothSpring()),
+              converter: const AlignmentMotionConverter(),
               currentPhase: phase,
               playing: false,
               builder: (context, alignment, _, child) {
@@ -40,7 +40,7 @@ class _ManualPhaseControlState extends State<ManualPhaseControl> {
                       child: Container(
                         width: 50,
                         height: 50,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: CupertinoColors.activeBlue,
                         ),

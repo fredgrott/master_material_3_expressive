@@ -26,6 +26,8 @@ Includes how to use the 3rd party Material_Symbol_Icon package. Source is in  th
 The article includes how to get the two tone variants of icons whichs is brand new to the spec.The 
 article is at:
 
+https://open.substack.com/pub/fredgrott/p/getting-material-symbols-in-material?r=26egx&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
+
 
 
 
