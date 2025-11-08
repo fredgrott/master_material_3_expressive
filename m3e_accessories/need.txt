@@ -1,0 +1,19 @@
+need
+
+
+1. Motor PageView Transitions involving shapes
+2. Motor NavRoute transitions involving cures
+3. theme Switch animation with motor
+4. onboard animation with motor
+5. Dynamic Color with Flex Color Scheme
+6. SurfaceContainer With expressive colors for ListItem containment
+
+
+
+1. Motion Motor Article needs to explain the 
+legacy curves tweens usage via the simulated curves and
+the new way to use Motor Controllers to do the new springs
+2. Heroine article    motor dep
+3. simple side sheet article  motor deb
+4. Plain Theme animation article
+5. Theme animation with motor article
