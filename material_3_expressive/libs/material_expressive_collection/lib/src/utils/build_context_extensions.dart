@@ -74,6 +74,9 @@ extension MQExt on BuildContext {
   /// Returns same as MediaQuery.of(context).size
   /// but will only rebuild if stuff changes.
   /// Returns that actual device size rather than the logical size
+  ///
+  /// It also eliminates having to MediaQuery DeviceFeatures hinge
+  /// as them canonical layouts can be on size alone.
   Size get sizePx => displayObject.size;
 
   /// Returns same as MediaQuery.of(context).size.width
@@ -109,16 +112,4 @@ extension MQExt on BuildContext {
   /// Returns fraction (0-1) of screen height in pixels
   double heightPct(double fraction) => fraction * heightPx;
 
-}
-
-/// Extension method that helps with working with the hinge specifically.
-extension MediaQueryHinge on MediaQueryData {
-  DisplayFeature? get hinge {
-    for (final DisplayFeature e in displayFeatures) {
-      if (e.type == DisplayFeatureType.hinge) {
-        return e;
-      }
-    }
-    return null;
-  }
 }
